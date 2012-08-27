@@ -10,14 +10,14 @@ set nowrap
 " turn on line numbers
 set number
 
-" turn on text folding
+" turn on text folding, based on indentation
 set foldmethod=indent
 
 " up to a depth of 4 times
 set foldcolumn=4
 
-" autoindent
-set autoindent
+" autoindent -- disable because pasting multiple lines into console causes problems?
+"set autoindent
 
 " use space instead of tab
 set expandtab

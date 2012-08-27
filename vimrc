@@ -1,3 +1,6 @@
+" don't worry about vi settings
+set nocompatible
+
 " turn on syntax hi lighting
 syntax on
 
@@ -27,9 +30,14 @@ set smarttab
 set mouse=a
 
 if has("gui_running")
-        " expanding vi size seems to badly screw up the terminal, so
-        " only do this in gvim
+" expanding vi size seems to badly screw up the terminal, so
+" only do this in gvim
         set lines=40 columns=100
-        " turn on horizontal scroll bar
+" turn on horizontal scroll bar
         set guioptions+=b
+
+        if has('win32')
+                " change to a decent font on windows
+                set guifont=Lucida_Console:h8:cDEFAULT
+        endif
 endif

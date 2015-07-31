@@ -1,6 +1,3 @@
-" don't worry about vi settings
-set nocompatible
-
 " turn on syntax hi lighting
 syntax on
 
@@ -13,31 +10,55 @@ set nowrap
 " turn on line numbers
 set number
 
-" turn on text folding, based on indentation
-set foldmethod=indent
+" turn on text folding
+set foldmethod=marker
 
 " up to a depth of 4 times
 set foldcolumn=4
 
-" autoindent -- disable because pasting multiple lines into console causes problems?
-"set autoindent
+" autoindent
+set autoindent
 
 " use space instead of tab
+set tabstop=4
+set shiftwidth=4
 set expandtab
 set smarttab
 
 " mouse support in console
 set mouse=a
 
-if has("gui_running")
-" expanding vi size seems to badly screw up the terminal, so
-" only do this in gvim
-        set lines=40 columns=100
-" turn on horizontal scroll bar
-        set guioptions+=b
+" allow switching buffers without writing changes
+set hidden
+" confirm abandonding a buffer if there are unsaved changes
+set confirm
 
-        if has('win32')
-                " change to a decent font on windows
-                set guifont=Lucida_Console:h8:cDEFAULT
-        endif
+" maps gn to go to next buffer instead of colon command
+" maps gp to go to previous buffer; loses the paste functionality
+map gn :bn<cr>
+map gp :bp<cr>
+
+if has("gui_running")
+        " expanding vi size seems to badly screw up the terminal, so
+        " only do this in gvim
+        set lines=40 columns=100
+        " turn on horizontal scroll bar
+        set guioptions+=b
 endif
+
+"python makeprg settings
+
+filetype plugin on
+set omnifunc=syntaxcomplete#Complete
+
+setlocal makeprg=python\ %
+
+setlocal errorformat=
+		\%A\ \ File\ \"%f\"\\\,\ line\ %l\\\,%m,
+		\%C\ \ \ \ %.%#,
+		\%+Z%.%#Error\:\ %.%#,
+		\%A\ \ File\ \"%f\"\\\,\ line\ %l,
+		\%+C\ \ %.%#,
+		\%-C%p^,
+		\%Z%m,
+		\%-G%.%#

@@ -38,6 +38,17 @@ set confirm
 map gn :bn<cr>
 map gp :bp<cr>
 
+" permanent status bar
+set laststatus=2
+
+set statusline= " clear status
+set statusline+=[B:%n] " show buffer number
+set statusline+=%(\ [%M%R%H]%) " modified, readonly, help flags
+set statusline+=\ %t " filename (no path)
+set statusline+=%= " right align
+set statusline+=%l,%v " line, column
+set statusline+=\ (%p%%\ of\ %L\ lines) " percentage through of number of lines
+
 if has("gui_running")
         " expanding vi size seems to badly screw up the terminal, so
         " only do this in gvim

@@ -1,0 +1,15 @@
+hardstatus alwayslastline
+hardstatus string "%?%{wk}%-w%?%{wb}%n* %t%?%{wk}%+w%?%?%{kk}"
+
+# Sick of full-screen programs like vim remaining in the scrollback 
+# buffer after you've closed them? Wouldn't it be great if they'd go 
+# away completely just like they do when you're not running screen?
+altscreen on
+
+termcapinfo xterm ti@:te@
+
+# disable screen lock shortcut
+bind x
+
+defc1 off
+defutf8 on

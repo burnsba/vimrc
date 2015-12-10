@@ -1,3 +1,6 @@
+" Necesary for lots of cool vim things
+set nocompatible
+
 " turn on syntax hi lighting
 syntax on
 
@@ -28,7 +31,7 @@ set smarttab
 " mouse support in console
 set mouse=a
 
-" allow switching buffers without writing changes
+" allow switching buffers without writing change
 set hidden
 " confirm abandonding a buffer if there are unsaved changes
 set confirm
@@ -48,28 +51,3 @@ set statusline+=\ %t " filename (no path)
 set statusline+=%= " right align
 set statusline+=%l,%v " line, column
 set statusline+=\ (%p%%\ of\ %L\ lines) " percentage through of number of lines
-
-if has("gui_running")
-        " expanding vi size seems to badly screw up the terminal, so
-        " only do this in gvim
-        set lines=40 columns=100
-        " turn on horizontal scroll bar
-        set guioptions+=b
-endif
-
-"python makeprg settings
-
-filetype plugin on
-set omnifunc=syntaxcomplete#Complete
-
-setlocal makeprg=python\ %
-
-setlocal errorformat=
-		\%A\ \ File\ \"%f\"\\\,\ line\ %l\\\,%m,
-		\%C\ \ \ \ %.%#,
-		\%+Z%.%#Error\:\ %.%#,
-		\%A\ \ File\ \"%f\"\\\,\ line\ %l,
-		\%+C\ \ %.%#,
-		\%-C%p^,
-		\%Z%m,
-		\%-G%.%#

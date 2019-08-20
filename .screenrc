@@ -1,3 +1,8 @@
+# startup with 3 tabs, process monitor, bandwidth monitor, and default
+screen -t htop htop
+screen -t bmon bmon
+screen -t sh
+
 hardstatus alwayslastline
 hardstatus string "%?%{wk}%-w%?%{wb}%n* %t%?%{wk}%+w%?%?%{kk}"
 
@@ -10,6 +15,11 @@ termcapinfo xterm ti@:te@
 
 # disable screen lock shortcut
 bind x
+
+# ctrl+pgup = prev
+bindkey -t ^[[5;5~ prev
+# ctrl+pgdn = next
+bindkey -t ^[[6;5~ next
 
 defc1 off
 defutf8 on
